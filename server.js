@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const connection = require('./configs/db');
 const authentication = require("./controllers/authentication");
 const employees = require('./controllers/employees');
 const authorisation = require('./middlewares/authorisation')
-app.use(express.json());
+app.use(express.json(),cors());
 require('dotenv').config();
 try{
  connection.then(res=>app.listen(3000, () => {
